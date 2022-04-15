@@ -20,7 +20,7 @@ __export(stdin_exports, {
   get: () => get
 });
 module.exports = __toCommonJS(stdin_exports);
-var import_articleClass_ff865297 = require("../../chunks/articleClass-ff865297.js");
+var import_articleClass_e304a29f = require("../../chunks/articleClass-e304a29f.js");
 var import_nhost_js = require("@nhost/nhost-js");
 async function get() {
   const query = `{  
@@ -31,9 +31,9 @@ async function get() {
     }  
   }`;
   console.log("get fired");
-  const data = await (0, import_articleClass_ff865297.d)(query);
+  const data = await (0, import_articleClass_e304a29f.d)(query);
   const articles = data["_helloworld_article"].map((article) => {
-    return new import_articleClass_ff865297.A(article);
+    return new import_articleClass_e304a29f.A(article);
   });
   if (data) {
     return {

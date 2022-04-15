@@ -16,7 +16,7 @@
 			</div>
 
 			<h4>Hello, my name is Søren and i will make your new website!</h4>
-			<img src="/animals/cat.jpeg" class="meimage" alt="our lead developer" />
+			<img src="/animals/cat2.jpeg" class="meimage" alt="our lead developer" />
 			<p class="floattext">
 				We want to offer you the posibility to have an online presence, that you can develop year by
 				year!

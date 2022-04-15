@@ -3140,8 +3140,6 @@ function setGrabCursor(moving) {
     return;
   const el = swiper.params.touchEventsTarget === "container" ? swiper.el : swiper.wrapperEl;
   el.style.cursor = "move";
-  el.style.cursor = moving ? "-webkit-grabbing" : "-webkit-grab";
-  el.style.cursor = moving ? "-moz-grabbin" : "-moz-grab";
   el.style.cursor = moving ? "grabbing" : "grab";
 }
 function unsetGrabCursor() {
@@ -3647,7 +3645,7 @@ function onScroll() {
   } else {
     swiper.translate = -wrapperEl.scrollTop;
   }
-  if (swiper.translate === -0)
+  if (swiper.translate === 0)
     swiper.translate = 0;
   swiper.updateActiveIndex();
   swiper.updateSlidesClasses();
@@ -5503,7 +5501,8 @@ function A11y(_ref) {
       containerMessage: null,
       containerRoleDescriptionMessage: null,
       itemRoleDescriptionMessage: null,
-      slideRole: "group"
+      slideRole: "group",
+      id: null
     }
   });
   let liveRegion = null;
@@ -5662,7 +5661,7 @@ function A11y(_ref) {
       addElLabel($containerEl, params.containerMessage);
     }
     const $wrapperEl = swiper.$wrapperEl;
-    const wrapperId = $wrapperEl.attr("id") || `swiper-wrapper-${getRandomNumber(16)}`;
+    const wrapperId = params.id || $wrapperEl.attr("id") || `swiper-wrapper-${getRandomNumber(16)}`;
     const live = swiper.params.autoplay && swiper.params.autoplay.enabled ? "off" : "polite";
     addElId($wrapperEl, wrapperId);
     addElLive($wrapperEl, live);
@@ -6105,7 +6104,7 @@ const Swiper_1 = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, sl
     default: () => {
       return `${(0, import_index_46d5d7a2.v)(Swiper_slide, "SwiperSlide").$$render($$result, {}, {}, {
         default: () => {
-          return `<img src="${"/animals/cat.jpeg"}" width="${"200"}" height="${"200"}" alt="${"some animal"}">`;
+          return `<img src="${"/animals/cat2.jpeg"}" width="${"200"}" height="${"200"}" alt="${"some animal"}">`;
         }
       })}
 ${(0, import_index_46d5d7a2.v)(Swiper_slide, "SwiperSlide").$$render($$result, {}, {}, {
@@ -6135,7 +6134,7 @@ ${(0, import_index_46d5d7a2.v)(Swiper_slide, "SwiperSlide").$$render($$result, {
       })}
 ${(0, import_index_46d5d7a2.v)(Swiper_slide, "SwiperSlide").$$render($$result, {}, {}, {
         default: () => {
-          return `<img src="${"/animals/tiger.jpeg"}" width="${"200"}" height="${"200"}" alt="${"some animal"}">`;
+          return `<img src="${"/animals/tiger2.jpeg"}" width="${"200"}" height="${"200"}" alt="${"some animal"}">`;
         }
       })}
 ...
@@ -6143,29 +6142,32 @@ ${(0, import_index_46d5d7a2.v)(Swiper_slide, "SwiperSlide").$$render($$result, {
     }
   })}`;
 });
-const Article = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, slots) => {
-  let { article } = $$props;
-  if ($$props.article === void 0 && $$bindings.article && article !== void 0)
-    $$bindings.article(article);
-  return `<div>Hello: ${(0, import_index_46d5d7a2.e)(article.title)} rating: ${(0, import_index_46d5d7a2.e)(article.rating)}</div>`;
-});
 const Articles = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, slots) => {
   let { articles } = $$props;
   if ($$props.articles === void 0 && $$bindings.articles && articles !== void 0)
     $$bindings.articles(articles);
-  return `${articles ? `
-	
-
-	${(0, import_index_46d5d7a2.u)(articles, (article) => {
-    return `${(0, import_index_46d5d7a2.v)(Article, "Article").$$render($$result, { article }, {}, {})}`;
-  })}` : ``}`;
+  return `${articles ? `<nord-table density="${"default"}"><table><thead><tr><th class="${"n-table-align-left"}">Title</th>
+					<th>Description</th>
+					<th>Method</th>
+					<th class="${"n-table-align-right"}">Rating</th></tr></thead>
+			<tbody>${(0, import_index_46d5d7a2.u)(articles, (article) => {
+    return `<tr><td class="${"n-table-align-left"}">${(0, import_index_46d5d7a2.e)(article.title)}</td>
+						<td class="${"n-table-ellipsis"}">Lorem ipsum .. </td>
+						<td>Card</td>
+						<td class="${"n-table-align-right"}">${(0, import_index_46d5d7a2.e)(article.rating)}</td>
+					</tr>`;
+  })}</tbody></table></nord-table>` : `<nord-empty-state><h2>Something\u2019s wrong</h2>
+	<p>We were unable to connect to the service. Click Retry to try again or View log to learn what happened.</p>
+	<nord-stack justify-content="${"center"}" gap="${"s"}" direction="${"horizontal"}"><nord-button>View log</nord-button>
+	  <nord-button variant="${"primary"}">Retry</nord-button></nord-stack></nord-empty-state>`}`;
 });
 var index_svelte_svelte_type_style_lang = "";
 const css = {
-  code: "main.svelte-1q40pws{text-align:center;padding:1em;max-width:800px;margin:0 auto}.newsletter.svelte-1q40pws{margin-top:70px}.swiper.svelte-1q40pws{margin-top:50px}@media only screen and (max-width: 600px){main.svelte-1q40pws{text-align:center;padding:1em;max-width:320px;margin:0 auto}}",
+  code: "main.svelte-19up9e{text-align:center;padding:1em;max-width:800px;margin:0 auto}.newsletter.svelte-19up9e{margin-top:70px}.swiper.svelte-19up9e{margin-top:50px}@media only screen and (max-width: 600px){main.svelte-19up9e{text-align:center;padding:1em;max-width:320px;margin:0 auto}}",
   map: null
 };
 const Routes = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, slots) => {
+  console.log("index.svelte fired");
   let { articles } = $$props;
   console.log("index.svelte fired");
   if ($$props.articles === void 0 && $$bindings.articles && articles !== void 0)
@@ -6173,16 +6175,25 @@ const Routes = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, slot
   $$result.css.add(css);
   return `${$$result.head += `${$$result.title = `<title>first year free</title>`, ""}`, ""}
 
-<main class="${"svelte-1q40pws"}">
-	
-	<p><a href="${"/values"}">Our values</a></p>
-	<h3>The Avantweb development team presents you an amazing oppotunity:</h3>
-	${(0, import_index_46d5d7a2.v)(Articles, "Articles").$$render($$result, { articles }, {}, {})}
-	${(0, import_index_46d5d7a2.v)(Form, "Form").$$render($$result, {}, {}, {})}
-	<div class="${"swiper svelte-1q40pws"}">${(0, import_index_46d5d7a2.v)(Swiper_1, "Swiper").$$render($$result, {}, {}, {})}</div>
+<main class="${"svelte-19up9e"}"><div class="${"n-reset"}"><div class="${"n-typeset"}">
+			
+			<svg class="${"n-color-icon-hover n-color-accent-stroke "}" width="${"50"}" viewBox="${"0 0 100 100"}"><circle fill="${"HotPink"}" cx="${"50"}" cy="${"50"}" r="${"40"}"></circle></svg>
+			<div class="${"n-border-strong-bs"}"><p class="${"n-font-size-l n-font-weight-strong "}"><a href="${"/values"}" class="${"n-color-status-info-weak n-color-surface-raised"}">Our values</a></p></div>
 
-	<div class="${"newsletter svelte-1q40pws"}"><input type="${"text"}" name="${"newsletter"}" placeholder="${"email"}">
-		<button type="${"submit"}">No thanks, Just the newsletter</button></div></main>
+			<h3>The Avantweb development team presents you an amazing oppotunity:</h3>
+
+			${(0, import_index_46d5d7a2.v)(Form, "Form").$$render($$result, {}, {}, {})}
+			<div class="${"swiper svelte-19up9e"}">${(0, import_index_46d5d7a2.v)(Swiper_1, "Swiper").$$render($$result, {}, {}, {})}</div>
+
+			<div class="${"newsletter svelte-19up9e"}"><input type="${"text"}" name="${"newsletter"}" placeholder="${"Write your email here"}">
+				<button type="${"submit"}">Subscribe to our newsletter</button></div>
+			<nord-stack direction="${"horizontal"}" gap="${"s"}"><nord-badge type="${"info"}">Info</nord-badge>
+				<nord-badge type="${"success"}">Success</nord-badge>
+				<nord-badge type="${"warning"}">Warning</nord-badge>
+				<nord-badge type="${"danger"}">Danger</nord-badge>
+				<nord-badge type="${"highlight"}">Highlight</nord-badge></nord-stack>
+			${(0, import_index_46d5d7a2.v)(Articles, "Articles").$$render($$result, { articles }, {}, {})}
+			</div></div></main>
 
 
 

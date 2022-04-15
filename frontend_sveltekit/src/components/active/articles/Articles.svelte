@@ -1,23 +1,39 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import type { ArticleType } from '$lib/types/article.type';
-	import Article from './Article.svelte';
-	//import Article from './Article.svelte'
-	export let articles: ArticleType[]
+	export let articles: ArticleType[];
 
-	// onMount(async () => {
-	// 	articles = await query();
-	// 	return () => console.log('destroyed onMount');
-	// });
 </script>
 
 {#if articles}
-	<!-- {JSON.stringify(articles)} -->
-	<!-- content here -->
-
-	{#each articles as article}
-		<Article {article} />
-	{/each}
+	<nord-table density="default">
+		<table>
+			<thead>
+				<tr>
+					<th class="n-table-align-left">Title</th>
+					<th>Description</th>
+					<th>Method</th>
+					<th class="n-table-align-right">Rating</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each articles as article}
+					<tr>
+						<td class="n-table-align-left"> {article.title}</td>
+						<td class="n-table-ellipsis"> Lorem ipsum .. </td>
+						<td>Card</td>
+						<td class="n-table-align-right"> {article.rating}</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	</nord-table>
 {:else}
-	<!-- else content here -->
+<nord-empty-state>
+	<h2>Something’s wrong</h2>
+	<p>We were unable to connect to the service. Click Retry to try again or View log to learn what happened.</p>
+	<nord-stack justify-content="center" gap="s" direction="horizontal">
+	  <nord-button>View log</nord-button>
+	  <nord-button variant="primary">Retry</nord-button>
+	</nord-stack>
+  </nord-empty-state>
 {/if}

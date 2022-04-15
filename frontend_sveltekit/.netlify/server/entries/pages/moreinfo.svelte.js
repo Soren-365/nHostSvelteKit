@@ -21,7 +21,7 @@ __export(stdin_exports, {
 });
 module.exports = __toCommonJS(stdin_exports);
 var import_index_46d5d7a2 = require("../../chunks/index-46d5d7a2.js");
-var import_HomeButton_9073aeaa = require("../../chunks/HomeButton-9073aeaa.js");
+var import_HomeButton_ed71be1e = require("../../chunks/HomeButton-ed71be1e.js");
 var moreinfo_svelte_svelte_type_style_lang = "";
 const css = {
   code: ".svelte-1vgpx7r.svelte-1vgpx7r{margin:0;padding:0;box-sizing:border-box}.part.svelte-1vgpx7r.svelte-1vgpx7r{text-align:left;margin:40px 0px}.bottompart.svelte-1vgpx7r.svelte-1vgpx7r{text-align:center;padding-top:15px}main.svelte-1vgpx7r.svelte-1vgpx7r{text-align:center;max-width:1000px;margin:0 auto;width:100%}.container.svelte-1vgpx7r.svelte-1vgpx7r{padding:20px;width:900px;margin:0 auto}h1.svelte-1vgpx7r.svelte-1vgpx7r{margin:70px}h2.svelte-1vgpx7r.svelte-1vgpx7r{margin:30px;text-align:center;width:620px;margin:30px auto}p.svelte-1vgpx7r.svelte-1vgpx7r{font-size:20px;margin:10px;padding:10px}.list.svelte-1vgpx7r.svelte-1vgpx7r{font-size:18px;margin:0px auto;width:240px}.lastlist.svelte-1vgpx7r.svelte-1vgpx7r{font-size:17px;margin-top:0px}.lastlist.svelte-1vgpx7r .svelte-1vgpx7r{font-size:16px;text-align:left}.floattext.svelte-1vgpx7r.svelte-1vgpx7r{padding-top:4px}.lastlist.svelte-1vgpx7r ul.svelte-1vgpx7r{list-style-type:circle}.lastlist.svelte-1vgpx7r li.svelte-1vgpx7r{margin:10px}.comment.svelte-1vgpx7r .svelte-1vgpx7r{margin:0px;padding:0px}.secondp.svelte-1vgpx7r.svelte-1vgpx7r{margin-left:-16px}.meimage.svelte-1vgpx7r.svelte-1vgpx7r{width:25%;float:left;margin:0px 63px 0px 10px}h4.svelte-1vgpx7r.svelte-1vgpx7r{margin:30px;margin-left:16px;margin-bottom:6px;text-align:left;font-size:16px;width:220px}@media only screen and (max-width: 600px){main.svelte-1vgpx7r.svelte-1vgpx7r{text-align:center;max-width:320px;margin:0 auto}}",
@@ -37,7 +37,7 @@ const Moreinfo = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, sl
 					<li class="${"svelte-1vgpx7r"}">Designed presentation website</li></ul></div>
 
 			<h4 class="${"svelte-1vgpx7r"}">Hello, my name is S\xF8ren and i will make your new website!</h4>
-			<img src="${"/animals/cat.jpeg"}" class="${"meimage svelte-1vgpx7r"}" alt="${"our lead developer"}">
+			<img src="${"/animals/cat2.jpeg"}" class="${"meimage svelte-1vgpx7r"}" alt="${"our lead developer"}">
 			<p class="${"floattext svelte-1vgpx7r"}">We want to offer you the posibility to have an online presence, that you can develop year by
 				year!
 			</p>
@@ -51,6 +51,6 @@ const Moreinfo = (0, import_index_46d5d7a2.c)(($$result, $$props, $$bindings, sl
 
             <div class="${"comment svelte-1vgpx7r"}"><p class="${"svelte-1vgpx7r"}"><i class="${"svelte-1vgpx7r"}">* Standardized design, free web address</i></p>
                 <p class="${"secondp svelte-1vgpx7r"}"><i class="${"svelte-1vgpx7r"}">optional : 20 Euro for your own web address</i></p></div></div>
-		${(0, import_index_46d5d7a2.v)(import_HomeButton_9073aeaa.H, "HomeButton").$$render($$result, {}, {}, {})}</div>
+		${(0, import_index_46d5d7a2.v)(import_HomeButton_ed71be1e.H, "HomeButton").$$render($$result, {}, {}, {})}</div>
 </main>`;
 });

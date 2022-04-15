@@ -16,8 +16,7 @@ export async function get() {
     }  
   }`;
 
-  console.log("get fired")
-  
+ 
 	const data = await dbQuery(query);
 
 	const articles = (data as ReturnData)['_helloworld_article'].map((article: ArticleType) => {

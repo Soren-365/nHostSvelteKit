@@ -853,7 +853,12 @@ async function render_response({
       stores: {
         page: writable(null),
         navigating: writable(null),
-        session,
+        session: __spreadProps(__spreadValues({}, session), {
+          subscribe: (fn) => {
+            is_private = true;
+            return session.subscribe(fn);
+          }
+        }),
         updated
       },
       page: {
@@ -879,17 +884,7 @@ async function render_response({
     for (let i = 0; i < branch.length; i += 1) {
       props[`props_${i}`] = await branch[i].loaded.props;
     }
-    let session_tracking_active = false;
-    const unsubscribe = session.subscribe(() => {
-      if (session_tracking_active)
-        is_private = true;
-    });
-    session_tracking_active = true;
-    try {
-      rendered = options.root.render(props);
-    } finally {
-      unsubscribe();
-    }
+    rendered = options.root.render(props);
   } else {
     rendered = { head: "", html: "", css: { code: "", map: null } };
   }
@@ -1228,7 +1223,7 @@ async function load_node({
           if (opts.body && typeof opts.body !== "string") {
             throw new Error("Request body must be a string");
           }
-          response = await respond(new Request(new URL(requested, event.url).href, opts), options, {
+          response = await respond(new Request(new URL(requested, event.url).href, __spreadProps(__spreadValues({}, opts), { credentials: void 0 })), options, {
             getClientAddress: state.getClientAddress,
             initiator: route,
             prerender: state.prerender
@@ -1450,32 +1445,38 @@ async function respond_with_error({
   resolve_opts
 }) {
   try {
-    const default_layout = await options.manifest._.nodes[0]();
-    const default_error = await options.manifest._.nodes[1]();
-    const layout_loaded = await load_node({
-      event,
-      options,
-      state,
-      route: null,
-      node: default_layout,
-      $session,
-      stuff: {},
-      is_error: false,
-      is_leaf: false
-    });
-    const error_loaded = await load_node({
-      event,
-      options,
-      state,
-      route: null,
-      node: default_error,
-      $session,
-      stuff: layout_loaded ? layout_loaded.stuff : {},
-      is_error: true,
-      is_leaf: false,
-      status,
-      error: error2
-    });
+    const branch = [];
+    let stuff = {};
+    if (resolve_opts.ssr) {
+      const default_layout = await options.manifest._.nodes[0]();
+      const default_error = await options.manifest._.nodes[1]();
+      const layout_loaded = await load_node({
+        event,
+        options,
+        state,
+        route: null,
+        node: default_layout,
+        $session,
+        stuff: {},
+        is_error: false,
+        is_leaf: false
+      });
+      const error_loaded = await load_node({
+        event,
+        options,
+        state,
+        route: null,
+        node: default_error,
+        $session,
+        stuff: layout_loaded ? layout_loaded.stuff : {},
+        is_error: true,
+        is_leaf: false,
+        status,
+        error: error2
+      });
+      branch.push(layout_loaded, error_loaded);
+      stuff = error_loaded.stuff;
+    }
     return await render_response({
       options,
       state,
@@ -1484,10 +1485,10 @@ async function respond_with_error({
         hydrate: options.hydrate,
         router: options.router
       },
-      stuff: error_loaded.stuff,
+      stuff,
       status,
       error: error2,
-      branch: [layout_loaded, error_loaded],
+      branch,
       event,
       resolve_opts
     });
@@ -1517,7 +1518,7 @@ async function respond$1(opts) {
     }));
   }
   try {
-    nodes = await Promise.all(route.a.map((n) => options.manifest._.nodes[n] && options.manifest._.nodes[n]()));
+    nodes = await Promise.all(route.a.map((n) => n == void 0 ? n : options.manifest._.nodes[n]()));
   } catch (err) {
     const error3 = coalesce_to_error(err);
     options.handle_error(error3, event);
@@ -1583,7 +1584,8 @@ async function respond$1(opts) {
           if (error2) {
             while (i--) {
               if (route.b[i]) {
-                const error_node = await options.manifest._.nodes[route.b[i]]();
+                const index = route.b[i];
+                const error_node = await options.manifest._.nodes[index]();
                 let node_loaded;
                 let j = i;
                 while (!(node_loaded = branch[j])) {
@@ -1974,7 +1976,7 @@ function set_paths(paths) {
 }
 function set_prerendering(value) {
 }
-const template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="description" content="" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<!-- <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="cssReset.css"> -->\n		' + head + "\n	</head>\n	<body>\n		<div>" + body + "</div>\n	</body>\n</html>\n";
+const template = ({ head, body, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="description" content="" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<link rel="stylesheet" href="' + assets2 + '/stylesheet/css.nord.1.0.4.min.css" />\n	<!-- <link\n		rel="stylesheet"\n		href="/resources/kahi-ui.framework.css"\n	/>\n\n	<link\n		rel="stylesheet"\n		href="/resources/kahi-ui.theme.default.css"\n	/> -->\n\n	<!-- For minified:\n\n	<link\n		rel="stylesheet"\n		href="/path/to/kahi-ui.framework.min.css"\n	/>\n\n	<link\n		rel="stylesheet"\n		href="/path/to/kahi-ui.theme.default.min.css"\n	/> -->\n\n		' + head + "\n	</head>\n	<body>\n		<div>" + body + "</div>\n	</body>\n</html>\n";
 let read = null;
 set_paths({ "base": "", "assets": "" });
 let default_protocol = "https";

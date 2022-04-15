@@ -23,7 +23,7 @@ __export(stdin_exports, {
 module.exports = __toCommonJS(stdin_exports);
 var import_nhost_js = require("@nhost/nhost-js");
 const nhost = new import_nhost_js.NhostClient({
-  backendUrl: "https://fqthrzcrchwfoqjsbzzm.nhost.run/"
+  backendUrl: "https://ojtyorcmhmdntinlsvcf.nhost.run"
 });
 async function dbQuery(query) {
   const { data, error } = await nhost.graphql.request(query);

@@ -15,7 +15,7 @@
     "src": "src/routes/index.ts",
     "isEntry": true,
     "imports": [
-      "_articleClass-ff865297.js"
+      "_articleClass-e304a29f.js"
     ]
   },
   "src/routes/articles/[id].ts": {
@@ -23,7 +23,7 @@
     "src": "src/routes/articles/[id].ts",
     "isEntry": true,
     "imports": [
-      "_articleClass-ff865297.js"
+      "_articleClass-e304a29f.js"
     ]
   },
   ".svelte-kit/runtime/components/layout.svelte": {
@@ -42,17 +42,6 @@
       "_index-46d5d7a2.js"
     ]
   },
-  "src/routes/index.svelte": {
-    "file": "entries/pages/index.svelte.js",
-    "src": "src/routes/index.svelte",
-    "isEntry": true,
-    "imports": [
-      "_index-46d5d7a2.js"
-    ],
-    "css": [
-      "assets/entries/pages/index.svelte-fd4c527c.css"
-    ]
-  },
   "src/routes/articles/[id].svelte": {
     "file": "entries/pages/articles/_id_.svelte.js",
     "src": "src/routes/articles/[id].svelte",
@@ -61,13 +50,24 @@
       "_index-46d5d7a2.js"
     ]
   },
+  "src/routes/index.svelte": {
+    "file": "entries/pages/index.svelte.js",
+    "src": "src/routes/index.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index-46d5d7a2.js"
+    ],
+    "css": [
+      "assets/entries/pages/index.svelte-f1da3872.css"
+    ]
+  },
   "src/routes/moreinfo.svelte": {
     "file": "entries/pages/moreinfo.svelte.js",
     "src": "src/routes/moreinfo.svelte",
     "isEntry": true,
     "imports": [
       "_index-46d5d7a2.js",
-      "_HomeButton-9073aeaa.js"
+      "_HomeButton-ed71be1e.js"
     ],
     "css": [
       "assets/entries/pages/moreinfo.svelte-6b57362d.css"
@@ -79,7 +79,7 @@
     "isEntry": true,
     "imports": [
       "_index-46d5d7a2.js",
-      "_HomeButton-9073aeaa.js"
+      "_HomeButton-ed71be1e.js"
     ],
     "css": [
       "assets/entries/pages/values.svelte-4c2e3c3b.css"
@@ -88,11 +88,11 @@
   "_index-46d5d7a2.js": {
     "file": "chunks/index-46d5d7a2.js"
   },
-  "_articleClass-ff865297.js": {
-    "file": "chunks/articleClass-ff865297.js"
+  "_articleClass-e304a29f.js": {
+    "file": "chunks/articleClass-e304a29f.js"
   },
-  "_HomeButton-9073aeaa.js": {
-    "file": "chunks/HomeButton-9073aeaa.js",
+  "_HomeButton-ed71be1e.js": {
+    "file": "chunks/HomeButton-ed71be1e.js",
     "imports": [
       "_index-46d5d7a2.js"
     ],

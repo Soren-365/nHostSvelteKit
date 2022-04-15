@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.20.0",
-    "@rollup/plugin-replace": "^4.0.0",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-netlify": "^1.0.0-next.51",
     "@sveltejs/kit": "next",
@@ -28,15 +27,20 @@
     "prettier-plugin-svelte": "^2.5.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.10.1",
+    "svelte-preprocess": "^4.10.6",
     "tslib": "^2.3.1",
     "typescript": "~4.6.2"
   },
   "type": "module",
   "dependencies": {
     "@nhost/nhost-js": "^1.0.9",
+    "@nordhealth/components": "^1.0.0",
+    "@nordhealth/css": "^1.0.4",
+    "@nordhealth/themes": "^5.1.5",
+    "@popeindustries/lit-html-server": "^4.0.1",
     "graphql": "^16.3.0",
     "graphql-request": "^4.2.0",
+    "node-sass": "^7.0.1",
     "svelte-forms-lib": "^2.0.1",
     "swiper": "^8.0.7",
     "yup": "^0.32.11"
