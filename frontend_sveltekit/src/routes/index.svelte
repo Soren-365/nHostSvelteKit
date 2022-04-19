@@ -1,4 +1,4 @@
-<script lang="ts" >
+<script lang="ts">
 	import Form from '../components/active/form/Form.svelte';
 	import Swiper from '../components/active/swiper/swiper.svelte';
 	//import  '@nordhealth/components';
@@ -6,13 +6,13 @@
 	import Articles from '../components/active/articles/Articles.svelte';
 	import type { ArticleType } from '$lib/types/article.type';
 	//import CoffeeMug  from '../components/active/coffeeMug/coffeeMug.svelteUnused';
-
-
-	import { onMount } from 'svelte';
+	import NCommandMenu from '../components/active/nCommandMenu/NCommandMenu.svelte';
+	
+import { onMount } from 'svelte';
 	onMount(async () => {
-		import('@nordhealth/components')
-		
-	});
+		await import('@nordhealth/components');
+	})
+
 
 
 	// The page always has access to props from `get`...
@@ -34,7 +34,6 @@
 <main>
 	<div class="n-reset">
 		<div class="n-typeset">
-		
 			<!-- <h4>Hello, this is {devMode} {import.meta.env.HASURA_DB_URL} {import.meta.env.VITE_MESSAGE}</h4> -->
 			<!-- <MyButton /> -->
 			<svg class="n-color-icon-hover n-color-accent-stroke " width="50" viewBox="0 0 100 100">
@@ -46,8 +45,10 @@
 				</p>
 			</div>
 
+			<NCommandMenu />
+					
 			<h3>The Avantweb development team presents you an amazing oppotunity:</h3>
-
+			
 			<Form />
 			<div class="swiper"><Swiper /></div>
 
@@ -62,7 +63,7 @@
 				<nord-badge type="danger">Danger</nord-badge>
 				<nord-badge type="highlight">Highlight</nord-badge>
 			</nord-stack>
-			<Articles {articles} />
+			<Articles {articles} /> 
 			<!-- nord typesetting divs below -->
 		</div>
 	</div>
