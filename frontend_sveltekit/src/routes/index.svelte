@@ -9,6 +9,7 @@
 	import NCommandMenu from '../components/active/nCommandMenu/NCommandMenu.svelte';
 	
 import { onMount } from 'svelte';
+//import NHeader from '../components/active/nHeader/NHeader.svelte';
 	onMount(async () => {
 		await import('@nordhealth/components');
 	})
@@ -44,7 +45,7 @@ import { onMount } from 'svelte';
 					<a href="/values" class="n-color-status-info-weak n-color-surface-raised">Our values</a>
 				</p>
 			</div>
-
+			<!-- <NHeader/> -->
 			<NCommandMenu />
 					
 			<h3>The Avantweb development team presents you an amazing oppotunity:</h3>
